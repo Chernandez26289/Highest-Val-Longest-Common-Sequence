@@ -1,0 +1,4 @@
+# ninja log v6
+25	458	7971413512474096	build.ninja	b201e560a49e6f1f
+20	448	7971413513674992	CMakeFiles/Highest_Val_Longest_Common_Sequence.dir/src/main.cpp.obj	e9bb581d07e7174b
+449	659	7971413517975081	Highest_Val_Longest_Common_Sequence.exe	42f695717fbb1d6f
