@@ -1,0 +1,9 @@
+6
+q 4
+w 5
+e 8
+r 9
+t 8
+y 2
+qwertqwyrweqywerqwyteqywerq
+tqywetqywteqwreqwyetqwyetqw

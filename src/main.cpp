@@ -1,8 +1,10 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <vector>
+#include <algorithm>
+#include <chrono>
 using namespace std;
-#include "LCS.h"
 #include <unordered_map>
 
 int main(){
@@ -49,13 +51,41 @@ int main(){
         return 1;
     }
     inputFile.close();
-    cout << "K = " << k << endl;
-    cout << "Character values:" << endl;
-    for(auto &pair : charValues){
-        cout << pair.first << " -> " << pair.second << endl;
+    int n = A.length();
+    int m = B.length();
+    auto start = chrono::high_resolution_clock::now();
+    vector<vector<int>> values(n+1, vector<int>(m+1, 0));
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= m; j++){
+            if(A[i - 1] == B[j - 1]){
+                int matchValue = charValues[A[i - 1]];
+                values[i][j] = max({
+                    values[i - 1][j],
+                    values[i][j - 1],
+                    values[i - 1][j - 1] + matchValue});
+            }else{
+                values[i][j] = max(values[i - 1][j], values[i][j - 1]);
+            }
+        }
     }
-    cout << "A = " << A << endl;
-    cout << "B = " << B << endl;
+    string subsequence = "";
+    while(n > 0 && m > 0){
+        if(A[n - 1] == B[m - 1] && values[n][m] == values[n - 1][m - 1] + charValues[A[n - 1]]){
+            subsequence += A[n - 1];
+            n--;
+            m--;
+        }else if(values[n - 1][m] >= values[n][m - 1]){
+            n--;
+        }else{
+            m--;
+        }
+    }
+    reverse(subsequence.begin(), subsequence.end());
+    auto end = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
+    cout << values[A.length()][B.length()] << endl;
+    cout << subsequence << endl;
+    cout << "Time took to run file " << inputFileName << ": " << duration.count() << " microseconds!" << endl;
     return 0;
 }
 
