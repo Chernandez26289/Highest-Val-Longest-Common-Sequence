@@ -34,6 +34,10 @@ int main(){
             cout<<"There is an invalid pair input in the file provided." << endl;
             return 1;
         }
+        if(charValues.find(character) != charValues.end()){
+            cout << "You put two of the same character in the file: " << character << "." << endl;
+            return 1;
+        }
         charValues[character] = characterValue;
     }
     string A, B;
@@ -57,14 +61,14 @@ int main(){
     vector<vector<int>> values(n+1, vector<int>(m+1, 0));
     for(int i = 1; i <= n; i++){
         for(int j = 1; j <= m; j++){
-            if(A[i - 1] == B[j - 1]){
+            if(A[i - 1] != B[j - 1]){
+                values[i][j] = max(values[i - 1][j], values[i][j - 1]);
+            }else{
                 int matchValue = charValues[A[i - 1]];
                 values[i][j] = max({
                     values[i - 1][j],
                     values[i][j - 1],
                     values[i - 1][j - 1] + matchValue});
-            }else{
-                values[i][j] = max(values[i - 1][j], values[i][j - 1]);
             }
         }
     }
