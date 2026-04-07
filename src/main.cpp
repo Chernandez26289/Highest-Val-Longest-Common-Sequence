@@ -9,7 +9,7 @@ using namespace std;
 
 int main(){
     string inputFileName;
-    cout << "Input file name (../inputs/<file_name>.txt): ";
+    cout << "Input file name (inputs/<file_name>.txt): ";
     cin >> inputFileName;
     cout << "Trying to open: " << inputFileName << endl;
     ifstream inputFile(inputFileName);
