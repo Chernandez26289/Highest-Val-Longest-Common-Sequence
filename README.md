@@ -8,5 +8,5 @@ Carson Hernandez - 12091173
 Select the Code button above the repository and copy the HTTPS, 
 Then Open CLion and select the New Project From Version Control option, 
 Paste the URL and pick a directory on your computer that is empty and clone the repository.
-# Once you do this do into the Edit Configurations in the 'Run' Section to change the working directory to the local path on your system.
-Then you can run the program, remember to add any files that you want into the input folder.
+# Once you do this go into the Edit Configurations in the 'Run' Section to change the working directory to the local path on your system.
+Then you can run the program, remember to add any files that you want into the input folder. The program will give you output in the format of the highest value, then the substring in the terminal.
